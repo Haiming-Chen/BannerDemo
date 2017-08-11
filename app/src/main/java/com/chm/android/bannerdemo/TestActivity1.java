@@ -24,10 +24,9 @@ import butterknife.ButterKnife;
  * 描述: NULL
  */
 public class TestActivity1 extends BaseActivity {
-    @BindView(R.id.mRollPagerView)
-    RollPagerView mRollViewPager;
 
-
+    @BindView(R.id.mRollPagerView1)
+    RollPagerView mRollViewPager1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,23 +36,31 @@ public class TestActivity1 extends BaseActivity {
         initBanner();
     }
 
+    //初始化Banner
     private void initBanner() {
-        //mRollViewPager.setHintView(new IconHintView(this,R.drawable.point_focus,R.drawable.point_normal));//自定义指示器
-       // mRollViewPager.setHintView(new TextHintView(this));//设置指示器为文字
-        //mRollViewPager.setHintView(null);//隐藏指示器
+        mRollViewPager1.setAdapter(new ImageNormalAdapter());//设置适配器
 
-        mRollViewPager.setAdapter(new ImageNormalAdapter());//设置适配器
-        mRollViewPager.setHintView(new ColorPointHintView(this, Color.YELLOW, Color.WHITE));//设置指示器颜色
+        //指示器4兄弟,也就是那小圆点
+       /* mRollViewPager1.setHintView(new IconHintView(this,R.drawable.point_focus,R.drawable.point_normal));//自定义指示器
+        mRollViewPager1.setHintView(new TextHintView(this));//设置指示器为文字
+        mRollViewPager1.setHintView(null);//隐藏指示器*/
+        mRollViewPager1.setHintView(new ColorPointHintView(this, Color.YELLOW, Color.WHITE));//设置指示器颜色
+      /*
+        mRollViewPager1.setPlayDelay(3000);//设置播放时间间隔
+        mRollViewPager1.setAnimationDurtion(500);  //设置透明度*/
+
         //点击监听
-        mRollViewPager.setOnItemClickListener(new OnItemClickListener() {
+        mRollViewPager1.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(TestActivity1.this, "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TestActivity1.this, "你点几了第 " + position + " 图片", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    //适配器
     private class ImageNormalAdapter extends StaticPagerAdapter {
+        //本地图片资源
         int[] imgs = new int[]{
                 R.drawable.img1,
                 R.drawable.img2,
@@ -71,13 +78,13 @@ public class TestActivity1 extends BaseActivity {
             return view;
         }
 
-
         @Override
         public int getCount() {
             return imgs.length;
         }
     }
 
+    //设置透明状态栏
     @Override
     public void statusBarColor() {
         super.statusBarColor();

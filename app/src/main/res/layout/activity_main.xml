@@ -25,6 +25,14 @@
             android:textColor="#ffffff"
             />
     </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="轮播图\n加载本地图片\n加载网络\n2种Demo"
+        android:gravity="center_horizontal"
+        android:textSize="22sp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,13 +43,13 @@
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="方式一"
+            android:text="本地"
             />
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="方式一"
+            android:text="网络"
             />
     </LinearLayout>
 

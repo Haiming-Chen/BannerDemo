@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity {
               startActivity(TestActivity1.class);
                 break;
             case R.id.btn2:
+                startActivity(TestActivity2.class);
                 break;
         }
     }
